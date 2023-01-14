@@ -32,3 +32,8 @@ label {
 input {
   margin-bottom: 5px;
 }
+
+li {
+  color:red;
+  cursor: pointer
+}
