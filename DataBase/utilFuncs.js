@@ -10,8 +10,12 @@ const listBooks = async () => {
 };
 
 const findBook = async (id) => {
-  let book = await BookModel.findById({ _id: id });
-  return book;
+  try {
+    let book = await BookModel.findById({ _id: id });
+    return book;
+  } catch (err) {
+    errorHandle(err);
+  }
 };
 
 const addBook = async (name) => {

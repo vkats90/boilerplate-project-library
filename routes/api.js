@@ -38,7 +38,6 @@ module.exports = function (app) {
     })
 
     .delete(async function (req, res) {
-      //if successful response will be 'complete delete successful'
       await deleteBooks();
       res.send("complete delete successful");
     });
@@ -47,7 +46,6 @@ module.exports = function (app) {
     .route("/api/books/:id")
     .get(async function (req, res) {
       let bookid = req.params.id;
-      //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
       let book = await findBook(bookid);
       if (book) res.json(book);
       else res.send("no book exists");
@@ -78,6 +76,7 @@ module.exports = function (app) {
         else res.send("delete successful");
       } catch (err) {
         console.log("Error:" + err);
+        res.send("no book exists");
       }
     });
 };
